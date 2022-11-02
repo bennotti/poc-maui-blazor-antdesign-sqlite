@@ -1,0 +1,43 @@
+﻿@page "/"
+@attribute [Authorize]
+@inject PocMaui.Core.Contract.App.InternalService.ISetupService _setupService
+@inject NavigationManager UriHelper
+@inject CustomAuthenticationStateProvider AuthStateProvider
+@inject NavigationManager Navigation
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+<Button Type="@ButtonType.Primary"
+        Loading="_withIconLoading"
+        OnClick="IncrementCount">
+    SAIR
+</Button>
+<Button Type="@ButtonType.Primary"
+        Loading="_withIconLoading"
+        OnClick="IncrementCount2">
+    Click me!
+</Button>
+
+
+@code {
+    private bool _withIconLoading;
+
+    private async Task IncrementCount()
+    {
+        _withIconLoading = true;
+        await _setupService.FecharBancoDados();
+        await AuthStateProvider.Logout();
+        Navigation.NavigateTo(""); //Root URL
+        _withIconLoading = false;
+    }
+
+    private void IncrementCount2()
+    {
+        _withIconLoading = true;
+        UriHelper.NavigateTo("/counter");
+        _withIconLoading = false;
+    }
+}

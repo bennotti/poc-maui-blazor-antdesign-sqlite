@@ -1,0 +1,50 @@
+﻿@inherits LayoutComponentBase
+@inject PocMaui.Core.Contract.App.InternalService.ISetupService _setupService
+@inject NavigationManager NavigationManager
+@using System.ComponentModel.DataAnnotations;
+@using System.Text.Json;
+
+<Layout Class="layout">
+    <AuthorizeView>
+        <Authorized>
+            <Header>
+                <div class="logo" />
+                <Menu Theme="MenuTheme.Dark" Mode="MenuMode.Horizontal" DefaultSelectedKeys=@(new[]{"1"})>
+                    <MenuItem Key="1">
+                        <NavLink href="" Match="NavLinkMatch.All">
+                            <span class="oi oi-home" aria-hidden="true"></span> Home
+                        </NavLink>
+                    </MenuItem>
+                    <MenuItem Key="2">
+                        <NavLink href="counter">
+                            <span class="oi oi-plus" aria-hidden="true"></span> Counter
+                        </NavLink>
+                    </MenuItem>
+                    <MenuItem Key="3">
+                        <NavLink href="fetchdata">
+                            <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+                        </NavLink>
+                    </MenuItem>
+                </Menu>
+            </Header>
+        </Authorized>
+    </AuthorizeView>
+    <Content Style="padding: 0 50px;">
+        <div class="site-layout-content">@Body</div>
+    </Content>
+</Layout>
+
+<style>
+    .site-layout-content {
+        background: #fff;
+        padding: 24px;
+        min-height: 280px;
+    }
+    #components-layout-demo-top .logo {
+        width: 120px;
+        height: 31px;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 16px 24px 16px 0;
+        float: left;
+    }
+</style>

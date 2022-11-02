@@ -1,0 +1,32 @@
+﻿@page "/authentication/login"
+@inject NavigationManager Navigation;
+@inject CustomAuthenticationStateProvider AuthStateProvider;
+
+<h3>Login to Access Application</h3>
+
+<div class="alert alert-info">
+    This is a dummy login page, providing `Test` for the Username and Password will authenticate you.
+</div>
+
+<Button Type="@ButtonType.Primary"
+        OnClick="HandleValidSubmit">
+    Entrar
+</Button>
+
+@code {
+    //private LoginViewModel loginModel = new();
+
+    private async Task HandleValidSubmit()
+    {
+        //Valiate user acount
+        //var successful = loginModel.ValidateLogin(out string jwtToken);
+
+        ////Not successful, don't need to do anything
+        //if (!successful)
+        //    return;
+
+        //Call login and recirect
+        await AuthStateProvider.Login("asd");
+        Navigation.NavigateTo(""); //Root URL
+    }
+}
