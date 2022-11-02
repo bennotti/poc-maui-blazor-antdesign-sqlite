@@ -1,0 +1,9 @@
+PocMaui.App/bin/
+PocMaui.App/obj/
+PocMaui.Core/bin/
+PocMaui.Core/obj/
+PocMaui.Infra/bin/
+PocMaui.Infra/obj/
+poc-maui-app/.vs/
+poc-maui-app/bin/
+poc-maui-app/obj/
